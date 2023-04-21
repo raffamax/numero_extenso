@@ -8,7 +8,7 @@ let centena = ['cem','cento','duzentos','trezentos','quatrocentos','quinhentos',
 function enviar() {
   let number = Number(document.getElementById('number').value);
 
-  if (number < 0 || number > 100999) {
+  if (number < 0 || number > 1000000000) {
     document.getElementById('resultNegative').innerHTML = `Este número está fora do intervalo q sei escrever, Consulte novamente em breve.`;
     document.getElementById('result').innerHTML = '';
     document.getElementById('text-result').innerHTML = '';
@@ -97,11 +97,47 @@ function enviar() {
         (number % 100 > 20 && (((number % 100) % 100) % 10) !== 0 ? ' e ' + unidade[((number % 100) % 100) % 10] : '' ) ;
       }
 
+      if (number < 1000000) {
+        return centena[Math.floor(number / 100000)] +
+        ((number / 1000) % 100 < 20 && (number / 1000) % 100 > 0 ? ' e ' + unidade[Math.floor(number / 1000) % 100] + ' mil ' : '' ) +
+        ((number / 1000) % 100 < 100 && (number / 1000) % 100 >= 20 ? ' e ' + dezenaDezena[Math.floor(((number / 1000) % 100) / 10)] : '' ) +
+        (Math.floor(((number / 1000) % 100) % 10 ) !== 0 ? ' e ' + unidade[Math.floor(((number / 1000) % 100) % 10 )] + ' mil' : ' mil') +
+        (number % 1000 === 100 ? ' e cem' : '' ) +
+        (number % 1000 === 200 ? ' e cuzentos' : '' ) +
+        (number % 1000 === 300 ? ' e trezentos' : '' ) +
+        (number % 1000 === 400 ? ' e quatrocentos' : '' ) +
+        (number % 1000 === 500 ? ' e quinhentos' : '' ) +
+        (number % 1000 === 600 ? ' e seiscentos' : '' ) +
+        (number % 1000 === 700 ? ' e setecentos' : '' ) +
+        (number % 1000 === 800 ? ' e oitocentos' : '' ) +
+        (number % 1000 === 900 ? ' e novecentos' : '' ) +
+        (number % 1000 > 100 
+          && number % 1000 !== 200
+          && number % 1000 !== 300
+          && number % 1000 !== 400
+          && number % 1000 !== 500
+          && number % 1000 !== 600
+          && number % 1000 !== 700
+          && number % 1000 !== 800
+          && number % 1000 !== 900 ? ', ' + centena[Math.floor((number % 1000) / 100)] : '') +
+        (number % 100 < 20 && number % 100 > 0 ? ' e ' + unidade[number % 100] : '') +
+        (number % 100 < 100 && number % 100 >= 20 ? ' e ' + dezenaDezena[Math.floor((number % 100) / 10)] : '') +
+        (number % 100 > 20 && (((number % 100) % 100) % 10) !== 0 ? ' e ' + unidade[((number % 100) % 100) % 10] : '' ) ;
+      }
+
+      if (number === 1000000) {
+        return 'Um milhão'
+      }
+
+      // if (number < 1000000000) {
+      //   return 
+      // }
+
 
 
     }
 
-    console.log(Math.floor(number % 100000))
+    console.log(number / 1000000)
 
     let numberByText = transformNumberText(number);
     let result = document.getElementById('result');

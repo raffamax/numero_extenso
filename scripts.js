@@ -3,6 +3,17 @@ let dezenaDezena = ['','','vinte','trinta','quarenta','cinquenta','sessenta','se
 let centena = ['cem','cento','duzentos','trezentos','quatrocentos','quinhentos','seiscentos','setecentos','sitocentos','novecentos'];
 
 
+const numberInput = document.querySelector("#number");
+
+numberInput.addEventListener("keyup" , (e) => {
+  if (e.code === "Enter") {
+    const numberDigited = e.target.value;
+
+    enviar()
+  }
+
+})
+
 function enviar() {
   let number = Number(document.getElementById('number').value);
 
@@ -134,6 +145,14 @@ function enviar() {
         
         (Math.floor(number / 1000) % 100 < 20 && Math.floor(number / 1000) % 100 > 0 ? ' e ' + unidade[Math.floor(number / 1000) % 100] + ' mil' : '' ) +
         (Math.floor(number / 1000) % 100 < 100 && Math.floor(number / 1000) % 100 >= 20 ? ' e ' + dezenaDezena[Math.floor(((number / 1000) % 100) / 10)] : '' ) +
+        ((number / 1000) % 100 === 20 ? ' mil' : '') +
+        ((number / 1000) % 100 === 30 ? ' mil' : '') +
+        ((number / 1000) % 100 === 40 ? ' mil' : '') +
+        ((number / 1000) % 100 === 50 ? ' mil' : '') +
+        ((number / 1000) % 100 === 60 ? ' mil' : '') +
+        ((number / 1000) % 100 === 70 ? ' mil' : '') +
+        ((number / 1000) % 100 === 80 ? ' mil' : '') +
+        ((number / 1000) % 100 === 90 ? ' mil' : '') +
         (Math.floor((number / 1000) % 100 ) % 10 !== 0 && Math.floor(number / 1000) % 100 > 20 ? ' e ' + unidade[Math.floor(((number / 1000) % 100) % 10)] + ' mil' : '' ) +
         (number % 1000 === 100 ? ' e cem' : '' ) +
         (number % 1000 === 200 ? ' e cuzentos' : '' ) +
@@ -162,7 +181,7 @@ function enviar() {
 
     }
 
-    console.log((number / 1000) % 100 )
+    console.log(((number / 1000) / 10) % 100)
 
     let numberByText = transformNumberText(number);
     let result = document.getElementById('result');

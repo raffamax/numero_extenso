@@ -181,7 +181,6 @@ function enviar() {
 
     }
 
-    console.log(((number / 1000) / 10) % 100)
 
     let numberByText = transformNumberText(number);
     let result = document.getElementById('result');

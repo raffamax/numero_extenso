@@ -17,8 +17,13 @@ numberInput.addEventListener("keyup" , (e) => {
 function enviar() {
   let number = Number(document.getElementById('number').value);
 
+  if(number == '') {
+    alert('Digite um número')
+    location.reload()
+  }
+
   if (number < 0 || number > 1000000) {
-    document.getElementById('resultNegative').innerHTML = `Este número está fora do intervalo q sei escrever, Consulte novamente em breve.`;
+    document.getElementById('resultNegative').innerHTML = `Este número está fora do intervalo que sei escrever, Consulte novamente em breve.`;
     document.getElementById('result').innerHTML = '';
     document.getElementById('text-result').innerHTML = '';
   } else {
@@ -187,7 +192,7 @@ function enviar() {
     result.innerHTML = `${numberByText}`;
 
     let textResult = document.getElementById('text-result');
-    textResult.innerHTML = 'O número digitado foi...' ;
+    textResult.innerHTML = 'O número digitado foi:' ;
   }
 }
 

@@ -17,7 +17,7 @@ numberInput.addEventListener("keyup" , (e) => {
 function enviar() {
   let number = Number(document.getElementById('number').value);
 
-  if (number < 0 || number > 1000000000) {
+  if (number < 0 || number > 1000000) {
     document.getElementById('resultNegative').innerHTML = `Este número está fora do intervalo q sei escrever, Consulte novamente em breve.`;
     document.getElementById('result').innerHTML = '';
     document.getElementById('text-result').innerHTML = '';

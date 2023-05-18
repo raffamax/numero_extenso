@@ -22,7 +22,8 @@ function enviar() {
     location.reload()
   }
 
-  if (number < 0 || number > 1000000) {
+
+  if (number <= 0 || number > 1000000) {
     document.getElementById('resultNegative').innerHTML = `Este número está fora do intervalo que sei escrever, Consulte novamente em breve.`;
     document.getElementById('result').innerHTML = '';
     document.getElementById('text-result').innerHTML = '';
